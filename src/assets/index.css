@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-zukrein-300;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  * {
+    @apply text-zukrein-400;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .container {
+    @apply pr-4 pl-4 mx-auto;
+  }
+  @media (min-width: 768px) {
+    .container {
+      width: 750px;
+    }
+  }
+  @media (min-width: 992px) {
+    .container {
+      width: 970px;
+    }
+  }
+  @media (min-width: 1200px) {
+    .container {
+      width: 1170px;
+    }
+  }
+
+  input {
+    @apply bg-[#343434] rounded-md py-2 px-4 outline-none text-sm;
+  }
+
+  textarea {
+    @apply bg-[#343434] rounded-md py-2 px-4 outline-none text-sm resize-none;
+  }
+}
+
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+* {
+  scrollbar-width: auto;
+  scrollbar-color: #202020 #3f3f3f;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #3f3f3f;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #202020;
+  border-radius: 10px;
+  border: 3px none #ffffff;
+}
