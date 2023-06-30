@@ -2,12 +2,12 @@
   <div
     class="flex flex-col pl-8 justify-center items-start md:items-center py-16 space-y-16 bg-[#1D1D1D]"
   >
-    <h2 class="text-3xl font-bold">My Services</h2>
+    <h2 class="text-2xl md:text-3xl font-bold">My Services</h2>
     <div
       class="max-w-sm md:max-w-[960px] gap-3 md:gap-0 flex flex-col md:flex-row justify-between w-full"
     >
       <section class="flex flex-col gap-3 md:gap-24 justify-between">
-        <div class="flex items-center gap-2">
+        <div class="flex items-center gap-3">
           <div>
             <svg
               width="38"
@@ -17,16 +17,16 @@
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                d="M43.3333 6.5H8.66667C6.27684 6.5 4.33334 8.4435 4.33334 10.8333V41.1667C4.33334 43.5565 6.27684 45.5 8.66667 45.5H43.3333C45.7232 45.5 47.6667 43.5565 47.6667 41.1667V10.8333C47.6667 8.4435 45.7232 6.5 43.3333 6.5ZM8.66667 41.1667V15.1667H43.3333L43.3377 41.1667H8.66667Z"
+                d="M39 6H4.33333C1.9435 6 0 7.9435 0 10.3333V40.6667C0 43.0565 1.9435 45 4.33333 45H39C41.3898 45 43.3333 43.0565 43.3333 40.6667V10.3333C43.3333 7.9435 41.3898 6 39 6ZM4.33333 40.6667V14.6667H39L39.0043 40.6667H4.33333Z"
                 fill="#13FF00"
               />
               <path
-                d="M20.1348 20.1349L12.103 28.1667L20.1348 36.1986L23.1985 33.1349L18.2303 28.1667L23.1985 23.1986L20.1348 20.1349ZM31.8652 20.1349L28.8015 23.1986L33.7697 28.1667L28.8015 33.1349L31.8652 36.1986L39.897 28.1667L31.8652 20.1349Z"
+                d="M15.7378 20.1349L7.706 28.1667L15.7378 36.1986L18.8015 33.1349L13.8333 28.1667L18.8015 23.1986L15.7378 20.1349ZM27.4682 20.1349L24.4045 23.1986L29.3727 28.1667L24.4045 33.1349L27.4682 36.1986L35.5 28.1667L27.4682 20.1349Z"
                 fill="#13FF00"
               />
             </svg>
           </div>
-          <h3 class="text-xl font-semibold">Web Development</h3>
+          <h3 class="text-lg md:text-xl font-semibold">Web Development</h3>
         </div>
         <div class="flex items-center gap-2">
           <div>
@@ -38,16 +38,16 @@
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                d="M36.8333 4.33337H15.1667C12.7768 4.33337 10.8333 6.27687 10.8333 8.66671V43.3334C10.8333 45.7232 12.7768 47.6667 15.1667 47.6667H36.8333C39.2232 47.6667 41.1667 45.7232 41.1667 43.3334V8.66671C41.1667 6.27687 39.2232 4.33337 36.8333 4.33337ZM15.1667 36.8312V10.8334H36.8333L36.8377 36.8312H15.1667Z"
+                d="M30.8571 1H5.14286C2.30657 1 0 3.19765 0 5.9V45.1C0 47.8024 2.30657 50 5.14286 50H30.8571C33.6934 50 36 47.8024 36 45.1V5.9C36 3.19765 33.6934 1 30.8571 1ZM5.14286 37.7476V8.35H30.8571L30.8623 37.7476H5.14286V37.7476Z"
                 fill="#13FF00"
               />
             </svg>
           </div>
-          <h3 class="text-xl font-semibold">Mobile Development</h3>
+          <h3 class="text-lg md:text-xl font-semibold">Mobile Development</h3>
         </div>
       </section>
-      <section class="flex flex-col gap-3 md:gap-24 justify-between">
-        <div class="flex items-center gap-2">
+      <section class="flex flex-col -ml-1 gap-3 md:gap-24 justify-between">
+        <div class="flex items-center gap-3">
           <div>
             <svg
               width="38"
@@ -62,9 +62,9 @@
               />
             </svg>
           </div>
-          <h3 class="text-xl font-semibold">UI Design</h3>
+          <h3 class="text-lg md:text-xl font-semibold">UI Design</h3>
         </div>
-        <div class="flex items-center gap-2">
+        <div class="flex items-center gap-3">
           <div>
             <svg
               width="38"
@@ -87,7 +87,7 @@
               />
             </svg>
           </div>
-          <h3 class="text-xl font-semibold">Social Media Design</h3>
+          <h3 class="text-lg md:text-xl font-semibold">Social Media Design</h3>
         </div>
       </section>
     </div>

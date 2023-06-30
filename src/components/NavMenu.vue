@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
-import { Icon } from '@iconify/vue'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 const routes = [
@@ -23,7 +22,12 @@ const routes = [
 ]
 
 const openedNavbar = ref(false)
+const scrollHeight = ref(0)
 onMounted(() => {
+  window.addEventListener('scroll', () => {
+    scrollHeight.value = window.scrollY
+  })
+
   gsap.registerPlugin(ScrollTrigger)
 
   gsap.to('.topToBottom', {
@@ -38,7 +42,11 @@ onMounted(() => {
 <template>
   <div class="fixed w-full z-50">
     <!--Computer-->
-    <div class="hidden md:flex top-0 w-full justify-center md:space-x-12 py-4 items-center">
+    <div
+      :class="`hidden md:flex top-0 w-full justify-center md:space-x-12 py-4 items-center ${
+        scrollHeight > 100 ? 'backdrop-blur-sm' : ''
+      }`"
+    >
       <a
         v-for="(route, i) in routes"
         :href="route.path"
@@ -69,20 +77,34 @@ onMounted(() => {
           </svg>
         </div>
       </div>
-      <div
-        v-if="openedNavbar"
-        @mouseleave="openedNavbar = false"
-        class="flex flex-col top-0 w-full justify-center md:space-x-12 items-center"
-      >
-        <a
-          v-for="(route, i) in routes"
-          :href="route.path"
-          :key="i"
-          class="w-full text-center rounded-md text-lg hover:text-zukrein-200 font-semibold hover:bg-zukrein-100 py-2 transition-all text-shadow duration-300"
+      <Transition>
+        <div
+          v-if="openedNavbar"
+          @mouseleave="openedNavbar = false"
+          class="flex flex-col top-0 w-full justify-center md:space-x-12 items-center"
         >
-          {{ route.name }}
-        </a>
-      </div>
+          <a
+            v-for="(route, i) in routes"
+            :href="route.path"
+            :key="i"
+            class="w-full text-center rounded-md text-lg hover:text-zukrein-200 font-semibold hover:bg-zukrein-100 py-2 transition-all text-shadow duration-300"
+          >
+            {{ route.name }}
+          </a>
+        </div>
+      </Transition>
     </div>
   </div>
 </template>
+
+<style scoped>
+.v-enter-active,
+.v-leave-active {
+  transition: all 0.2s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
+</style>

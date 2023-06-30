@@ -63,10 +63,10 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="flex h-screen flex-shrink-0 relative items-center overflow-hidden">
+  <div class="flex h-[80vh] md:h-screen flex-shrink-0 relative items-center overflow-hidden">
     <section class="w-full lg:w-4/5 h-full flex z-20 flex-shrink-0">
       <div
-        class="bg-zukrein-200 h-screen w-full lg:w-1/2 flex flex-col justify-center pl-8 lg:pl-48 m-0 gap-3"
+        class="bg-zukrein-200 h-[80vh] md:h-screen w-full lg:w-1/2 flex flex-col justify-center px-4 lg:pl-48 m-0 gap-3"
       >
         <h1
           id="leftToRight"
@@ -77,20 +77,20 @@ onMounted(() => {
         <h2 id="leftToRight" class="font-bold text-2xl md:text-4xl">
           Front-end Developer & UI Designer
         </h2>
-        <p id="leftToRight" class="text-gray-300 text-sm">
+        <p id="leftToRight" class="text-gray-300 text-sm md:text-base">
           I am a UI designer and web developer who is passionate about creating beautiful and
           functional websites.
         </p>
         <div id="leftToRight" class="flex gap-3 mt-5">
           <button
-            class="py-2 px-3 text-sm md:text-base transition-all hover:bg-zukrein-300 rounded-md font-semibold flex gap-3 items-center justify-center"
+            class="py-2 px-1 md:px-3 text-sm md:text-base transition-all hover:bg-zukrein-300 rounded-md font-semibold flex gap-2 md:gap-3 items-center justify-center"
           >
             <Icon icon="ci:cloud-download" width="25px" />
             <span>Download CV</span>
           </button>
           <a
             href="#about"
-            class="py-2 px-3 text-sm md:text-base text-gray-800 bg-zukrein-100 transition-all hover:bg-opacity-90 rounded-md font-semibold text-color flex gap-3 items-center justify-center"
+            class="py-2 px-1 md:px-3 text-sm md:text-base text-gray-800 bg-zukrein-100 transition-all hover:bg-opacity-90 rounded-md font-semibold text-color flex gap-2 md:gap-3 items-center justify-center"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24">
               <path
@@ -122,7 +122,7 @@ onMounted(() => {
         </div>
       </div>
       <div
-        class="clipSection max-lg:hidden w-1/3 h-full bg-zukrein-200 z-0 pr-1 border border-zukrein-200"
+        class="clipSection hidden lg:block w-1/3 h-full bg-zukrein-200 z-0 pr-1 border border-zukrein-200"
       ></div>
     </section>
     <div class="max-lg:block absolute left-[34%] top-[8%]">

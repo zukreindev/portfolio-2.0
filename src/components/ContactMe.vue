@@ -9,7 +9,7 @@
             <p>CONTACT</p>
             <div class="h-0.5 w-44 md:w-56 bg-white"></div>
           </div>
-          <div class="flex flex-col gap-6 md:gap-8 pl-10 md:pl-16">
+          <div class="hidden md:flex flex-col gap-6 md:gap-8 pl-10 md:pl-16">
             <div class="flex items-center text-sm gap-4">
               <svg
                 width="25"
@@ -65,7 +65,7 @@
               <p>zukrein00</p>
             </div>
           </div>
-          <div class="h-0.5 w-44 md:w-56 bg-white"></div>
+          <div class="hidden md:block h-0.5 w-44 md:w-56 bg-white"></div>
         </section>
         <form class="bg-[#202020] md:pt-16 py-5 md:pb-10 px-5 md:px-8 flex flex-col gap-6 md:gap-7 relative">
           <div class="flex gap-3 md:gap-7 flex-col md:flex-row">

@@ -3,7 +3,7 @@
 <template>
   <div class="bg-zukrein-500 z-20 relative overflow-hidden" id="about">
     <div
-      class="container flex flex-col items-center px-8 md:px-0 py-14 md:py-28 justify-center gap-14 z-10"
+      class="container flex flex-col items-center px-4 md:px-0 py-14 md:py-28 justify-center gap-14 z-10"
     >
       <div class="flex flex-col items-center gap-1">
         <h2 class="text-3xl md:text-4xl font-bold uppercase">About me</h2>

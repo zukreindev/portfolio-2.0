@@ -5,45 +5,31 @@ import 'vue3-carousel/dist/carousel.css'
 const projects: {
   title: string
   language: string
-  image: string
   link: string
+  css?: string
   livepreview?: string
 }[] = [
   {
     title: 'Keyboard AFK Client',
     language: 'Go Lang',
-    image:
-      'https://media.discordapp.net/attachments/1115168305158836296/1124146124798836826/banner-five-years-animals-pig-brain-machine.png?width=954&height=554',
     link: 'https://github.com/zukrein00/KeyboardAFKClient'
-  },
-  {
-    title: 'Go KeyLogger',
-    language: 'Go Lang',
-    image:
-      'https://media.discordapp.net/attachments/1115168305158836296/1124146124798836826/banner-five-years-animals-pig-brain-machine.png?width=954&height=554',
-    link: 'https://github.com/zukrein00/Go-keylogger'
-  },
-  {
-    title: 'Permutation Calculator',
-    language: 'JavaScript',
-    image: 'https://i.zukrein.me/api/cdn/feiPAd.png',
-    link: 'https://github.com/zukrein00/permutation-calculator'
-  },
-  {
-    title: 'Çelik Hurda',
-    language: 'Svelte',
-    image:
-      'https://media.discordapp.net/attachments/1115168305158836296/1124147024955179109/image.png?width=913&height=554',
-    link: 'https://github.com/zukrein00/celikhurda',
-    livepreview: 'https://celikhurda.net'
   },
   {
     title: 'OpenAnime',
     language: 'Svelte',
-    image:
-      'https://media.discordapp.net/attachments/1115168305158836296/1124147024955179109/image.png?width=913&height=554',
     link: 'https://github.com/OpenAnime',
     livepreview: 'https://openani.me'
+  },
+  {
+    title: 'Go KeyLogger',
+    language: 'Go Lang',
+    link: 'https://github.com/zukrein00/Go-keylogger'
+  },
+  {
+    title: 'Çelik Hurda',
+    language: 'Svelte',
+    link: 'https://github.com/zukrein00/celikhurda',
+    livepreview: 'https://celikhurda.net'
   }
 ]
 </script>
@@ -68,20 +54,12 @@ const projects: {
             itemsToShow: 3
           }
         }"
-        class="z-20"
+        class="z-20 max-w-[1366px]"
       >
         <Slide v-for="(project, i) in projects" :key="i">
           <div class="bg-zukrein-600 shadow-lg rounded-lg z-20 overflow-hidden">
-            <div
-              :style="{
-                backgroundImage: `url(${project.image})`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center'
-              }"
-              class="h-64 bg-zukrein-300 rounded-t-lg"
-            ></div>
-            <div class="p-4 flex flex-col gap-4">
-              <div class="flex flex-col gap-1">
+            <div class="p-4 flex flex-col gap-5">
+              <div class="flex flex-col gap-2">
                 <h3 class="font-semibold text-lg text-start">{{ project.title }}</h3>
                 <p class="flex items-center gap-1">
                   <svg
@@ -101,7 +79,7 @@ const projects: {
                   ><span class="text-base text-zukrein-400">{{ project.language }}</span>
                 </p>
               </div>
-              <div class="flex gap-10 items-center">
+              <div class="flex gap-10 items-center justify-between">
                 <a :href="project.link" target="_blank" class="font-semibold rounded-lg flex gap-2"
                   >View Code
                   <svg
@@ -120,8 +98,10 @@ const projects: {
                 <a
                   :href="project.livepreview"
                   target="_blank"
-                  :class="`px-5 py-1.5 font-semibold rounded-lg bg-zukrein-100 text-zukrein-600 ${
-                    project.livepreview ? 'pointer-events-auto' : 'opacity-50 pointer-events-none'
+                  :class="`px-5 py-1.5 font-semibold rounded-lg  text-zukrein-600 ${
+                    project.livepreview
+                      ? 'pointer-events-auto bg-zukrein-100'
+                      : 'opacity-50 pointer-events-none bg-zukrein-300 text-white'
                   }`"
                   >Live Preview</a
                 >
@@ -138,8 +118,8 @@ const projects: {
     <div class="-z-10">
       <div class="absolute -top-96 -right-96">
         <svg
-          width="1068"
-          height="1068"
+          width="712"
+          height="712"
           viewBox="0 0 1068 1068"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -149,8 +129,8 @@ const projects: {
       </div>
       <div class="absolute -bottom-96 -left-96">
         <svg
-          width="1068"
-          height="1068"
+          width="712"
+          height="712"
           viewBox="0 0 1068 1068"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -180,6 +160,13 @@ const projects: {
   transform: rotateY(20deg) scale(0.9);
 }
 
+.carousel__slide--prev {
+  opacity: 0.8;
+}
+
+.carousel__slide--next {
+  opacity: 0.8;
+}
 .carousel__slide--active {
   opacity: 1;
   transform: rotateY(0) scale(1.01);

@@ -25,7 +25,7 @@
         <section class="flex flex-col gap-8 md:gap-16">
           <div class="font-medium gap-2 flex flex-col">
             <p class="flex font-semibold text-lg">2021 May - 2022 October</p>
-            <h4 class="text-zukrein-100 text-xl">Student</h4>
+            <h4 class="text-zukrein-100 text-xl">Project Founder</h4>
             <div class="text-[#C1C1C1] text-lg">Veiversa Software Development</div>
           </div>
           <div class="font-medium gap-2 flex flex-col">
@@ -37,7 +37,7 @@
       </section>
     </div>
     <div
-      class="text-[#272727] text-[200px] font-bold md:absolute -bottom-16 -left-[31.8rem] -z-10 select-none hidden"
+      class="text-[#272727] text-[200px] font-bold absolute -bottom-16 -left-[31.8rem] -z-10 select-none hidden md:block"
     >
       ABOUT ME
     </div>
