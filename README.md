@@ -1,46 +1,48 @@
-# zukreinme
 
-This template should help get you started developing with Vue 3 in Vite.
+<div  align="center">
 
-## Recommended IDE Setup
+<img  alt="Demo"  src="https://i.zukrein.me/api/cdn/XlnJs9.png" />
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+</div>
 
-## Type Support for `.vue` Imports in TS
+## Built With
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+My personal portfolio <a  href="https://zukrein.me/"  target="_blank">zukrein.me</a> which features some of my github projects as well as my resume and technical skills.<br/>
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+This project was built using these technologies.
 
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+- Vue
 
-## Customize configuration
+- TailwindCss
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+- CSS3
 
-## Project Setup
+- VsCode
 
-```sh
-pnpm install
-```
+- Vercel
 
-### Compile and Hot-Reload for Development
+## Features
 
-```sh
-pnpm dev
-```
+**🎨 Styled with Tailwind Css with easy to customize colors**
 
-### Type-Check, Compile and Minify for Production
+**📱 Fully Responsive**
 
-```sh
-pnpm build
-```
+## Getting Started
 
-### Lint with [ESLint](https://eslint.org/)
+Clone down this repository. You will need `node.js` and `git` installed globally on your machine.
 
-```sh
-pnpm lint
-```
+## 🛠 Installation and Setup Instructions
+
+1. Installation: `npm install`
+
+2. In the project directory, you can run: `npm dev`
+
+Runs the app in the development mode.
+
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+The page will reload if you make edits.
+
+### Show your support
+
+Give a ⭐ if you like this website!
