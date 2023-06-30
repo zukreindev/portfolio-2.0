@@ -1,7 +1,7 @@
 
 <div  align="center">
 
-<img  alt="Demo"  src="https://i.zukrein.me/u/XlnJs9.png" />
+<img  alt="Demo"  src="https://i.zukrein.me/api/cdn/XlnJs9.png" />
 
 </div>
 
