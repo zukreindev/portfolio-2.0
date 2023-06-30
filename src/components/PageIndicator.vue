@@ -3,12 +3,11 @@ import { onMounted, ref } from 'vue'
 
 let scrollHeight = ref(0)
 let totalHeight = ref(0)
-
 onMounted(() => {
   window.addEventListener('scroll', () => {
     scrollHeight.value = window.scrollY
   })
-  totalHeight.value = document.body.offsetHeight
+  totalHeight.value = document.body.offsetHeight - window.innerHeight
 })
 </script>
 
