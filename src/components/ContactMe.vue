@@ -1,4 +1,50 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ref } from 'vue'
+
+const name = ref('')
+const email = ref('')
+const subject = ref('')
+const message = ref('')
+const error = ref(false)
+const errorText = ref('Something went wrong. Please try again later.')
+const success = ref(false)
+const loading = ref(false)
+
+async function submitForm() {
+  if (name.value === '' || email.value === '' || message.value === '') {
+    error.value = true
+    return
+  }
+
+  loading.value = true
+
+  const response = await fetch('https://api.zukrein.me/contact', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      name: name.value,
+      email: email.value,
+      subject: subject.value,
+      message: message.value
+    })
+  })
+
+  if (response.status === 200) {
+    success.value = true
+    name.value = ''
+    email.value = ''
+    message.value = ''
+  } else {
+    const data = await response.json()
+    error.value = true
+    errorText.value = data.error.message
+  }
+
+  loading.value = false
+}
+</script>
 
 <template>
   <div class="bg-zukrein-500 flex flex-col items-center py-16" id="contact">
