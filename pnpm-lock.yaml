@@ -76,6 +76,9 @@ devDependencies:
   vue-tsc:
     specifier: ^1.6.5
     version: 1.6.5(typescript@5.0.4)
+  vue-turnstile:
+    specifier: ^1.0.0
+    version: 1.0.0
 
 packages:
 
@@ -2670,6 +2673,12 @@ packages:
       '@volar/vue-typescript': 1.6.5(typescript@5.0.4)
       semver: 7.5.2
       typescript: 5.0.4
+    dev: true
+
+  /vue-turnstile@1.0.0:
+    resolution: {integrity: sha512-d0N1lTbkq9+DA1IkR68fBzJPZKtaIg6rExL0VCPYx15mHyNFc6tniLHm7BD28N0MjGc60F7/rNaI9VxwNX0ciA==}
+    dependencies:
+      vue: 3.3.4
     dev: true
 
   /vue3-carousel@0.3.1(vue@3.3.4):

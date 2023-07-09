@@ -1,47 +1,59 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, reactive } from 'vue'
 
-const name = ref('')
-const email = ref('')
-const subject = ref('')
-const message = ref('')
+//the package has no declaration file
+// @ts-ignore
+import VueTurnstile from 'vue-turnstile'
+
+const input = reactive({
+  name: '',
+  email: '',
+  subject: '',
+  message: ''
+})
 const error = ref(false)
 const errorText = ref('Something went wrong. Please try again later.')
 const success = ref(false)
 const loading = ref(false)
+const cftoken = ref('')
+const cfturnstile = ref()
+
+const siteKey = import.meta.env.VITE_CF_TURNSTILE_SITE_KEY
 
 async function submitForm() {
-  if (name.value === '' || email.value === '' || message.value === '') {
+  if (input.name === '' || input.email === '' || input.message === '') {
     error.value = true
     return
   }
 
   loading.value = true
 
-  const response = await fetch('https://api.zukrein.me/contact', {
+  const response = await fetch('http://localhost:3001/contact', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      name: name.value,
-      email: email.value,
-      subject: subject.value,
-      message: message.value
+      name: input.name,
+      email: input.email,
+      subject: input.subject,
+      message: input.message,
+      cf_turnstile_token: cftoken.value
     })
   })
 
   if (response.status === 200) {
     success.value = true
-    name.value = ''
-    email.value = ''
-    message.value = ''
+    input.name = ''
+    input.email = ''
+    input.message = ''
   } else {
     const data = await response.json()
     error.value = true
     errorText.value = data.error.message
   }
-
+  // @ts-ignore
+  window.turnstile.reset()
   loading.value = false
 }
 </script>
@@ -113,48 +125,54 @@ async function submitForm() {
           </div>
           <div class="hidden md:block h-0.5 w-44 md:w-56 bg-white"></div>
         </section>
-        <form class="bg-[#202020] md:pt-16 py-5 md:pb-10 px-5 md:px-8 flex flex-col gap-6 md:gap-7 relative">
-          <div class="flex gap-3 md:gap-7 flex-col md:flex-row">
-            <div class="">
+        <form
+          class="bg-[#202020] md:pt-16 py-5 md:pb-10 px-5 md:px-8 flex flex-col gap-6 md:gap-7 relative"
+          @submit.prevent="submitForm"
+        >
+          <div class="flex gap-3 md:gap-7 flex-col md:flex-row w-full justify-between">
+            <div class="w-1/2">
               <p>Your Name</p>
-              <input class="w-full" type="text" name="" id="" />
+              <input class="w-full" v-model="input.name" type="text" required name="name" />
             </div>
-            <div>
+            <div class="w-1/2">
               <p>Your Email</p>
-              <input class="w-full" type="text" name="" id="" />
+              <input class="w-full" v-model="input.email" type="email" required name="email" />
             </div>
           </div>
           <div class="w-full">
             <p>Your Subject</p>
-            <input class="w-full" type="text" name="" id="" />
+            <input class="w-full" v-model="input.subject" type="text" required name="subject" />
           </div>
-          <div class="flex flex-col gap-6 md:gap-7 items-end">
+          <div class="flex flex-col gap-6 md:gap-7">
             <div class="w-full">
               <p>Message</p>
-              <textarea name="" id="" class="w-full h-24"></textarea>
+              <textarea name="" v-model="input.message" class="w-full h-24" required></textarea>
             </div>
-            <button
-              type="submit"
-              class="px-7 py-2 flex items-center justify-center gap-3 rounded-lg bg-zukrein-100 text-zukrein-200 font-semibold w-fit"
-            >
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
+            <div class="flex flex-col md:flex-row justify-between gap-5 items-center">
+              <VueTurnstile :site-key="siteKey" v-model="cftoken" ref="cfturnstile" theme="dark" />
+              <button
+                type="submit"
+                class="px-7 py-3 flex items-center justify-center gap-3 rounded-lg bg-zukrein-100 text-zukrein-200 font-semibold w-fit h-fit"
               >
-                <path
-                  d="M14.25 14.5001L13.1094 15.2605C12.4376 15.7084 11.5624 15.7084 10.8906 15.2605L9.75 14.5001M3 19.0001V10.0705C3 9.40177 3.3342 8.7773 3.8906 8.40637L10.8906 3.73971C11.5624 3.29184 12.4376 3.29184 13.1094 3.73971L20.1094 8.40637C20.6658 8.7773 21 9.40177 21 10.0705V19.0001H3ZM3 19.0001C3 20.1047 3.89543 21.0001 5 21.0001H19C20.1046 21.0001 21 20.1047 21 19.0001H3ZM3 19.0001L9.75 14.5001L3 19.0001ZM21 19.0001L14.25 14.5001L21 19.0001ZM3 10.0001L9.75 14.5001L3 10.0001ZM21 10.0001L14.25 14.5001L21 10.0001Z"
-                  stroke="#202020"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M14.25 14.5001L13.1094 15.2605C12.4376 15.7084 11.5624 15.7084 10.8906 15.2605L9.75 14.5001M3 19.0001V10.0705C3 9.40177 3.3342 8.7773 3.8906 8.40637L10.8906 3.73971C11.5624 3.29184 12.4376 3.29184 13.1094 3.73971L20.1094 8.40637C20.6658 8.7773 21 9.40177 21 10.0705V19.0001H3ZM3 19.0001C3 20.1047 3.89543 21.0001 5 21.0001H19C20.1046 21.0001 21 20.1047 21 19.0001H3ZM3 19.0001L9.75 14.5001L3 19.0001ZM21 19.0001L14.25 14.5001L21 19.0001ZM3 10.0001L9.75 14.5001L3 10.0001ZM21 10.0001L14.25 14.5001L21 10.0001Z"
+                    stroke="#202020"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
 
-              Submit
-            </button>
+                Submit
+              </button>
+            </div>
           </div>
         </form>
       </div>
