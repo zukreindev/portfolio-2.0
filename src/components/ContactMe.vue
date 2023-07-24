@@ -18,7 +18,7 @@ const loading = ref(false)
 const cftoken = ref('')
 const cfturnstile = ref()
 
-const siteKey = import.meta.env.VITE_CF_TURNSTILE_SITE_KEY
+const siteKey = "0x4AAAAAAAFXPmnYhhVF7ZEP"
 
 async function submitForm() {
   if (input.name === '' || input.email === '' || input.message === '') {
