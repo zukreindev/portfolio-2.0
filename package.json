@@ -16,7 +16,8 @@
     "unhead": "^1.1.27",
     "vue": "^3.3.4",
     "vue-router": "^4.2.2",
-    "vue3-carousel": "^0.3.1"
+    "vue3-carousel": "^0.3.1",
+    "vue3-toastify": "^0.1.12"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.2.0",

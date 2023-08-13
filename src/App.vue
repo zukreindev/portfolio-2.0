@@ -8,7 +8,7 @@ import MyServicesPage from './components/MyServicesPage.vue'
 import EducationAndJobsPage from './components/EducationAndJobsPage.vue'
 import MyProjects from './components/MyProjects.vue'
 import ContactMe from './components/ContactMe.vue'
-
+import 'vue3-toastify/dist/index.css'
 let loaded = ref(false)
 
 onMounted(() => {

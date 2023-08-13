@@ -4,6 +4,7 @@ import { ref, reactive } from 'vue'
 //the package has no declaration file
 // @ts-ignore
 import VueTurnstile from 'vue-turnstile'
+import { toast } from 'vue3-toastify'
 
 const input = reactive({
   name: '',
@@ -18,7 +19,7 @@ const loading = ref(false)
 const cftoken = ref('')
 const cfturnstile = ref()
 
-const siteKey = "0x4AAAAAAAFXPmnYhhVF7ZEP"
+const siteKey = '0x4AAAAAAAFXPmnYhhVF7ZEP'
 
 async function submitForm() {
   if (input.name === '' || input.email === '' || input.message === '') {
@@ -47,10 +48,19 @@ async function submitForm() {
     input.name = ''
     input.email = ''
     input.message = ''
+    input.subject = ''
+    toast.success('Message sent successfully!', {
+      theme: 'dark',
+      position: 'bottom-right'
+    })
   } else {
     const data = await response.json()
     error.value = true
     errorText.value = data.error.message
+    toast.error(data.error.message, {
+      theme: 'dark',
+      position: 'bottom-right'
+    })
   }
   // @ts-ignore
   window.turnstile.reset()
@@ -130,11 +140,11 @@ async function submitForm() {
           @submit.prevent="submitForm"
         >
           <div class="flex gap-3 md:gap-7 flex-col md:flex-row w-full justify-between">
-            <div class="w-1/2">
+            <div class="w-full md:w-1/2">
               <p>Your Name</p>
               <input class="w-full" v-model="input.name" type="text" required name="name" />
             </div>
-            <div class="w-1/2">
+            <div class="w-full md:w-1/2">
               <p>Your Email</p>
               <input class="w-full" v-model="input.email" type="email" required name="email" />
             </div>
@@ -151,6 +161,7 @@ async function submitForm() {
             <div class="flex flex-col md:flex-row justify-between gap-5 items-center">
               <VueTurnstile :site-key="siteKey" v-model="cftoken" ref="cfturnstile" theme="dark" />
               <button
+                v-if="!loading"
                 type="submit"
                 class="px-7 py-3 flex items-center justify-center gap-3 rounded-lg bg-zukrein-100 text-zukrein-200 font-semibold w-fit h-fit"
               >
@@ -171,6 +182,29 @@ async function submitForm() {
                 </svg>
 
                 Submit
+              </button>
+              <button
+                v-else
+                type="submit"
+                class="px-7 py-3 flex items-center justify-center gap-3 rounded-lg bg-zukrein-100 text-zukrein-200 font-semibold w-fit h-fit"
+              >
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M14.25 14.5001L13.1094 15.2605C12.4376 15.7084 11.5624 15.7084 10.8906 15.2605L9.75 14.5001M3 19.0001V10.0705C3 9.40177 3.3342 8.7773 3.8906 8.40637L10.8906 3.73971C11.5624 3.29184 12.4376 3.29184 13.1094 3.73971L20.1094 8.40637C20.6658 8.7773 21 9.40177 21 10.0705V19.0001H3ZM3 19.0001C3 20.1047 3.89543 21.0001 5 21.0001H19C20.1046 21.0001 21 20.1047 21 19.0001H3ZM3 19.0001L9.75 14.5001L3 19.0001ZM21 19.0001L14.25 14.5001L21 19.0001ZM3 10.0001L9.75 14.5001L3 10.0001ZM21 10.0001L14.25 14.5001L21 10.0001Z"
+                    stroke="#202020"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+
+                Submitting...
               </button>
             </div>
           </div>
